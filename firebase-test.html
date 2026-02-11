@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Simple test page to check if Firestore is working -->
+  <title>Firebase Firestore Test</title>
+</head>
+<body>
+
+  <h1>Firebase Firestore Test</h1>
+
+  <!-- Button to manually test the Firestore connection -->
+  <button onclick="testFirestoreConnection()">Test Firebase</button>
+
+  <!-- Firebase core library (v8 CDN version) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+  <!-- Firestore library -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+  <script>
+    // Firebase project configuration (from Firebase console)
+    const firebaseConfig = {
+      apiKey: "AIzaSyAQIYrX5aT8vmDRUwwZvsbks6lXJbGeNRQ",
+      authDomain: "furamora-2ce69.firebaseapp.com",
+      projectId: "furamora-2ce69",
+      storageBucket: "furamora-2ce69.firebasestorage.app",
+      messagingSenderId: "686445011079",
+      appId: "1:686445011079:web:57dd36ca05cd780b455822",
+      measurementId: "G-E34G9JX30F"
+    };
+
+    // Initialise Firebase using the config above
+    firebase.initializeApp(firebaseConfig);
+
+    // Create a reference to Firestore database
+    const db = firebase.firestore();
+
+    // This function runs when the button is clicked
+    function testFirestoreConnection() {
+
+      // Try to add a test document into a collection called "test"
+      db.collection("test").add({
+        message: "Hello from firebase-test.html",
+        time: new Date()
+      })
+
+      // If successful
+      .then(() => {
+        alert("Firebase connected! Check Firestore 'test' collection.");
+      })
+
+      // If there is an error
+      .catch((error) => {
+        console.error("Firestore error:", error);
+        alert("Firebase failed. Open the browser console to see the error.");
+      });
+    }
+  </script>
+
+</body>
+</html>

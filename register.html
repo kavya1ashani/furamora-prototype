@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Page title shown in browser tab -->
+    <title>Furamora – Register</title>
+
+    <!-- Makes layout responsive on different devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Main shared stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- Registration page body -->
+<body class="auth-page">
+
+    <!-- Simple navigation bar for auth pages -->
+    <nav class="top-nav simple-nav">
+
+        <!-- Website name -->
+        <div class="nav-left brand-text">FURAMORA</div>
+
+        <!-- Logo linking back to home -->
+        <div class="nav-center">
+            <a href="home.html" class="logo-link">
+                <img src="images/logo.png" alt="Furamora logo" class="logo-image">
+            </a>
+        </div>
+
+        <!-- Navigation links -->
+        <div class="nav-right nav-links">
+            <a href="home.html">Home</a>
+            <a href="index.html" class="nav-cta">Login</a>
+        </div>
+    </nav>
+
+    <!-- Main registration container -->
+    <div class="auth-container">
+        <div class="auth-box">
+
+            <h2>Create Your Account</h2>
+            <p>Sign up as a pet owner or a dog walker.</p>
+
+            <!-- Registration form (handled using JavaScript) -->
+            <form onsubmit="return false;">
+
+                <!-- Full name input -->
+                <label for="reg-name">Full Name</label>
+                <input id="reg-name" type="text" placeholder="Your name" required>
+
+                <!-- Email input -->
+                <label for="reg-email">Email</label>
+                <input id="reg-email" type="email" placeholder="you@example.com" required>
+
+                <!-- Password input -->
+                <label for="reg-password">Password</label>
+                <input id="reg-password" type="password" placeholder="Create a password" required>
+
+                <!-- Role selection (owner or walker only) -->
+                <label for="reg-role">I am a</label>
+                <select id="reg-role" required>
+                    <option value="">Select role</option>
+                    <option value="owner">Pet Owner</option>
+                    <option value="walker">Dog Walker</option>
+                </select>
+
+                <!-- Register button calls registerUser() in script.js -->
+                <button type="button" onclick="registerUser()">Register</button>
+            </form>
+
+            <!-- Link back to login page -->
+            <p class="auth-link">
+                Already have an account?
+                <a href="index.html">Login instead</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2026 Furamora – Prototype developed for BSc Computer Science</p>
+    </footer>
+
+    <!-- Firebase core library (v8 CDN version) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <!-- Firestore database library -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+      // Firebase configuration for the Furamora project
+      const firebaseConfig = {
+        apiKey: "AIzaSyAQIYrX5aT8vmDRUwwZvsbks6lXJbGeNRQ",
+        authDomain: "furamora-2ce69.firebaseapp.com",
+        projectId: "furamora-2ce69",
+        storageBucket: "furamora-2ce69.firebasestorage.app",
+        messagingSenderId: "686445011079",
+        appId: "1:686445011079:web:57dd36ca05cd780b455822",
+        measurementId: "G-E34G9JX30F"
+      };
+
+      // Initialise Firebase (only if not already initialised)
+      if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+      }
+
+      // Create Firestore reference so script.js can use it
+      const db = firebase.firestore();
+
+      // Expose db globally (optional but useful)
+      window.db = db;
+    </script>
+
+    <!-- Main JavaScript file containing registerUser() and other logic -->
+    <script src="script.js"></script>
+
+</body>
+</html>
