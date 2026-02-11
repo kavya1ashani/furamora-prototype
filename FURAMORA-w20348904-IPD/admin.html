@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Page title shown in browser tab -->
+    <title>Furamora – Admin Dashboard</title>
+
+    <!-- Makes the page responsive on different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Main CSS file used across the website -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- When the page loads, it runs initAdminDashboard() from script.js -->
+<body class="owner-page" onload="initAdminDashboard()">
+
+    <!-- Top navigation bar -->
+    <nav class="top-nav">
+
+        <!-- Website name on the left -->
+        <div class="nav-left brand-text">FURAMORA</div>
+
+        <!-- Logo in the center that links back to home -->
+        <div class="nav-center">
+            <a href="home.html" class="logo-link">
+                <img src="images/logo.png" alt="Furamora logo" class="logo-image">
+            </a>
+        </div>
+
+        <!-- Navigation links on the right -->
+        <div class="nav-right nav-links">
+            <a href="home.html">Home</a>
+            <!-- Logout just redirects back to login page in this prototype -->
+            <a href="index.html" class="nav-cta">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Page header section -->
+    <header class="owner-top">
+        <h1 class="owner-title">Admin Dashboard</h1>
+        <p class="owner-subtitle">
+            Review users and bookings for this prototype.
+        </p>
+    </header>
+
+    <!-- Main content area -->
+    <main class="owner-main">
+        <section class="owner-layout">
+
+            <!-- ===Users Section==== -->
+            <div class="owner-section">
+                <h2>Users</h2>
+
+                <!-- Dropdown to filter users by role -->
+                <label for="admin-role-filter">Filter by role</label>
+                <select id="admin-role-filter" onchange="renderAdminUsers()">
+                    <option value="all">All users</option>
+                    <option value="owner">Owners</option>
+                    <option value="walker">Walkers</option>
+                </select>
+
+                <!-- This div will be filled dynamically using JavaScript -->
+                <div id="admin-users-list" class="data-list">
+                    <!-- Filled by JS -->
+                </div>
+            </div>
+
+            <!-- === Bookings Section ==== -->
+            <div class="owner-section">
+                <h2>Bookings</h2>
+
+                <!-- Dropdown to filter bookings by status -->
+                <label for="admin-status-filter">Filter by status</label>
+                <select id="admin-status-filter" onchange="renderAdminBookings()">
+                    <option value="all">All bookings</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Accepted">Accepted</option>
+                    <option value="InProgress">In progress</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Declined">Declined</option>
+                </select>
+
+                <!-- This div will be populated with booking data -->
+                <div id="admin-bookings-list" class="data-list">
+                    <!-- Filled by JS -->
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- footer -->
+    <footer class="footer">
+        <p>© 2026 Furamora – Prototype developed for BSc Computer Science</p>
+    </footer>
+
+    <!-- Main JavaScript file that contains dashboard functions -->
+    <script src="script.js"></script>
+
+</body>
+</html>

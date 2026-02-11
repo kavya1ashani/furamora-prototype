@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Page title shown in browser tab -->
+    <title>Furamora – Latest Walk Report</title>
+
+    <!-- Responsive layout for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Main shared stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- Report page body -->
+<body class="auth-page">
+
+    <!-- Simple navigation bar -->
+    <nav class="top-nav simple-nav">
+
+        <!-- Website name -->
+        <div class="nav-left brand-text">FURAMORA</div>
+
+        <!-- Logo linking back to home -->
+        <div class="nav-center">
+            <a href="home.html" class="logo-link">
+                <img src="images/logo.png" alt="Furamora logo" class="logo-image">
+            </a>
+        </div>
+
+        <!-- Only home link needed here -->
+        <div class="nav-right nav-links">
+            <a href="home.html">Home</a>
+        </div>
+    </nav>
+
+    <!-- Main container for report content -->
+    <div class="auth-container">
+        <div class="auth-box">
+
+            <h2>Latest Walk Report</h2>
+
+            <!-- Short explanation of what this page shows -->
+            <p class="placeholder-text">
+                This page shows the most recently submitted walk report in this browser.
+            </p>
+
+            <!-- Report content will be inserted here using JavaScript -->
+            <div id="latest-report" class="reports-list">
+                <!-- Filled by small inline script -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 Furamora – Prototype developed for BSc Computer Science</p>
+    </footer>
+
+    <script>
+        // This script reads the latest walk report saved in localStorage
+        // It is only a simple demo (not connected to database)
+
+        const container = document.getElementById("latest-report");
+
+        // Get the stored report text from the browser
+        const text = localStorage.getItem("latestWalkReport");
+
+        // If no report exists, show placeholder message
+        if (!text) {
+            container.innerHTML = "<p class='placeholder-text'>No walk report has been submitted yet.</p>";
+        } else {
+            // Otherwise display the saved report
+            container.innerHTML = "<p>" + text + "</p>";
+        }
+    </script>
+
+</body>
+</html>
